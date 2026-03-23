@@ -7,11 +7,28 @@ type HeroProps = {
 
 export default function Hero({ t }: HeroProps) {
   const [mounted, setMounted] = useState(false);
+  const [displayedName, setDisplayedName] = useState("");
+  const name = t.hero.name;
 
   useEffect(() => {
     const timer = window.setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      let currentLength = 0;
+      const timeout = setTimeout(() => {
+        const interval = setInterval(() => {
+          currentLength++;
+          setDisplayedName(name.slice(0, currentLength));
+          if (currentLength >= name.length) clearInterval(interval);
+        }, 80);
+        return () => clearInterval(interval);
+      }, 600);
+      return () => clearTimeout(timeout);
+    }
+  }, [mounted, name]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -57,50 +74,22 @@ export default function Hero({ t }: HeroProps) {
           pointerEvents: "none",
         }}
       />
-
       <div style={{ maxWidth: 800, textAlign: "center", position: "relative", zIndex: 1 }}>
         <div
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? "none" : "translateY(20px)",
             transition: "opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s",
+            marginBottom: 24,
           }}
         >
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "rgba(124,58,237,0.1)",
-              border: "1px solid rgba(124,58,237,0.25)",
-              borderRadius: 100,
-              padding: "6px 18px",
-              marginBottom: 32,
-              fontSize: 12,
-              color: "#a78bfa",
-              fontFamily: "monospace",
-              letterSpacing: "0.15em",
-            }}
-          >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: "#7c3aed",
-                display: "inline-block",
-                boxShadow: "0 0 8px #7c3aed",
-                animation: "blink 2s ease infinite",
-              }}
-            />
-            {t.hero.available}
-          </div>
+          <span style={{ fontSize: 24 }}>💜</span>
         </div>
 
         <div
           style={{
             opacity: mounted ? 1 : 0,
-            transform: mounted ? "none" : "translateY(30px)",
+            transform: mounted ? "none" : "translateY(20px)",
             transition: "opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s",
           }}
         >
@@ -115,7 +104,14 @@ export default function Hero({ t }: HeroProps) {
           >
             {t.hero.greeting}
           </p>
+        </div>
 
+        <div
+          style={{
+            opacity: mounted ? 1 : 0,
+            transition: "opacity 0.8s ease 0.6s",
+          }}
+        >
           <h1
             style={{
               fontSize: "clamp(2.8rem, 8vw, 6rem)",
@@ -127,11 +123,30 @@ export default function Hero({ t }: HeroProps) {
               letterSpacing: "-0.02em",
               marginBottom: 20,
               fontFamily: "'Segoe UI', sans-serif",
+              minHeight: "1.2em",
+              display: "inline-block",
             }}
           >
-            {t.hero.name}
+            {displayedName}
+            <span
+              style={{
+                borderRight: "4px solid #a78bfa",
+                marginLeft: 4,
+                animation: "blinkCaret 1s step-end infinite",
+                opacity: displayedName === name ? 0 : 1,
+                transition: "opacity 0.3s ease",
+              }}
+            ></span>
           </h1>
+        </div>
 
+        <div
+          style={{
+            opacity: mounted ? 1 : 0,
+            transform: mounted ? "none" : "translateY(20px)",
+            transition: "opacity 1.2s ease 1.8s, transform 1.2s ease 1.8s",
+          }}
+        >
           <p
             style={{
               fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
@@ -152,8 +167,8 @@ export default function Hero({ t }: HeroProps) {
             justifyContent: "center",
             flexWrap: "wrap",
             opacity: mounted ? 1 : 0,
-            transform: mounted ? "none" : "translateY(30px)",
-            transition: "opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s",
+            transform: mounted ? "none" : "translateY(20px)",
+            transition: "opacity 1.2s ease 2.2s, transform 1.2s ease 2.2s",
           }}
         >
           <button
@@ -194,6 +209,30 @@ export default function Hero({ t }: HeroProps) {
           >
             {t.hero.cta2}
           </button>
+
+          <a
+            href="/cv.pdf"
+            download
+            className="btn-secondary"
+            style={{
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(124,58,237,0.1)",
+              border: "1px solid rgba(124,58,237,0.4)",
+              color: "#a78bfa",
+              padding: "14px 32px",
+              borderRadius: 50,
+              fontSize: 14,
+              fontFamily: "monospace",
+              letterSpacing: "0.1em",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+            }}
+          >
+            {t.hero.downloadCV || "Download CV"}
+          </a>
         </div>
 
         <div
@@ -221,9 +260,9 @@ export default function Hero({ t }: HeroProps) {
       </div>
 
       <style>{`
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.3; }
+        @keyframes blinkCaret {
+          0%, 100% { border-color: transparent; }
+          50% { border-color: #a78bfa; }
         }
 
         @keyframes scrollAnim {

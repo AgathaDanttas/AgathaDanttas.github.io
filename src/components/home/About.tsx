@@ -1,16 +1,20 @@
 import type { Translation } from "../../types/translation";
 import Reveal from "./Reveal";
+import { motion } from "framer-motion";
+import { Layers, Code2, Globe } from "lucide-react";
 
 type AboutProps = {
   t: Translation;
 };
 
 export default function About({ t }: AboutProps) {
-  const stats = [
-    { value: "20+", label: t.about.stat1 },
-    { value: "15+", label: t.about.stat2 },
-    { value: "3+", label: t.about.stat3 },
+  const differentials = [
+    { icon: Layers, label: "Foco em desenvolvimento full-stack" },
+    { icon: Code2, label: "Base sólida em lógica e organização" },
+    { icon: Globe, label: "Interesse em sistemas modernos e UX" },
   ];
+
+  const tags = ["TypeScript", "React", "NodeJS", "TailwindCSS", "C#", "Java", "MongoDB", "MySQL", "Kanban", "VS Code", "Figma"];
 
   return (
     <section id="about" style={{ padding: "120px 5%", position: "relative" }}>
@@ -44,6 +48,7 @@ export default function About({ t }: AboutProps) {
           </p>
 
           <h2
+            className="text-center md:text-left mx-auto md:mx-0"
             style={{
               fontSize: "clamp(1.8rem, 4vw, 3rem)",
               fontWeight: 700,
@@ -66,8 +71,8 @@ export default function About({ t }: AboutProps) {
             alignItems: "start",
           }}
         >
-          <div>
-            {[t.about.p1, t.about.p2, t.about.p3].map((p, index) => (
+          <div className="text-center md:text-left flex flex-col items-center md:items-start">
+            {[t.about.p1, t.about.p2, t.about.p3, t.about.p4].map((p, index) => (
               <Reveal key={index} delay={index * 0.1}>
                 <p
                   style={{
@@ -83,79 +88,89 @@ export default function About({ t }: AboutProps) {
             ))}
           </div>
 
-          <div
-            className="stats-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: 20,
-            }}
-          >
-            {stats.map((stat, index) => (
-              <Reveal key={index} delay={index * 0.12} direction="right">
-                <div
-                  className="stat-card"
-                  style={{
-                    background: "rgba(124,58,237,0.05)",
-                    border: "1px solid rgba(124,58,237,0.2)",
-                    borderRadius: 16,
-                    padding: "24px 16px",
-                    textAlign: "center",
-                    transition: "all 0.3s ease",
-                  }}
+          <div style={{ minWidth: 0 }}>
+            <div className="space-y-3 mb-10 flex flex-col gap-3">
+              {differentials.map(({ icon: Icon, label }, i) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="flex flex-col md:flex-row items-center justify-center md:justify-start text-center md:text-left gap-3 px-4 py-3 rounded-lg transition-colors border border-white/10 bg-white/5 hover:border-purple-500/30"
                 >
-                  <div
-                    style={{
-                      fontSize: "2rem",
-                      fontWeight: 800,
-                      background: "linear-gradient(135deg, #a78bfa, #7c3aed)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      marginBottom: 8,
-                    }}
-                  >
-                    {stat.value}
-                  </div>
+                  <Icon size={16} className="text-purple-400 shrink-0" color="#c084fc" />
+                  <span style={{ color: "rgba(255, 255, 255, 0.7)", fontSize: "14px" }}>{label}</span>
+                </motion.div>
+              ))}
+            </div>
 
-                  <div
+            <div className="flex gap-2 mx-auto md:mx-0" style={{ display: "flex", gap: "8px", overflow: "hidden", width: "100%", maxWidth: "100%", position: "relative", WebkitMaskImage: "linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent)" }}>
+              <div className="about-marquee" style={{ display: "flex", gap: "8px", flexShrink: 0, paddingRight: "8px" }}>
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
                     style={{
-                      color: "#64748b",
-                      fontSize: 12,
+                      padding: "4px 12px",
+                      fontSize: "12px",
                       fontFamily: "monospace",
-                      letterSpacing: "0.05em",
+                      color: "#d8b4fe",
+                      background: "rgba(88, 28, 135, 0.2)",
+                      border: "1px solid rgba(168, 85, 247, 0.2)",
+                      borderRadius: "9999px",
+                      whiteSpace: "nowrap",
                     }}
                   >
-                    {stat.label}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div aria-hidden="true" className="about-marquee" style={{ display: "flex", gap: "8px", flexShrink: 0, paddingRight: "8px" }}>
+                {tags.map((tag) => (
+                  <span
+                    key={tag + "_dup"}
+                    style={{
+                      padding: "4px 12px",
+                      fontSize: "12px",
+                      fontFamily: "monospace",
+                      color: "#d8b4fe",
+                      background: "rgba(88, 28, 135, 0.2)",
+                      border: "1px solid rgba(168, 85, 247, 0.2)",
+                      borderRadius: "9999px",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <style>{`
-        .stat-card:hover {
-          border-color: rgba(124,58,237,0.5) !important;
-          background: rgba(124,58,237,0.1) !important;
-          transform: translateY(-4px);
-          box-shadow: 0 8px 24px rgba(124,58,237,0.15);
+        .about-marquee {
+          animation: scrollAbout 20s linear infinite;
+        }
+
+        .about-marquee:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes scrollAbout {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
         }
 
         @media (max-width: 768px) {
           .about-grid {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
-          }
-
-          .stats-grid {
-            grid-template-columns: 1fr 1fr 1fr !important;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .stats-grid {
-            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

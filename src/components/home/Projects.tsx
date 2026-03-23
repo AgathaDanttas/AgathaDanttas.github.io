@@ -1,256 +1,215 @@
-import React from "react";
-import type { Translation } from "../../types/translation";
-import Reveal from "./reveal";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { ExternalLink, Github, FileText } from "lucide-react";
+import ProjectCaseModal from "./ProjectCaseModal";
 
+const projects = [
+  {
+    title: "Portfolio Pessoal",
+    description: "Portfolio moderno com animações, i18n, dark theme e design futurista.",
+    problem: "Centralizar presença online com identidade visual forte.",
+    stack: ["React", "TypeScript", "Tailwind", "Framer Motion"],
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+    live: "#",
+    code: "#",
+    caseStudy: {
+      problem: "Precisava de um espaço online que refletisse minha identidade como desenvolvedora — não apenas um currículo digital, mas uma experiência que comunicasse minha forma de pensar e construir.",
+      solution: "Desenvolvi um portfolio com design futurista em dark mode, usando React com animações fluidas via Framer Motion. Estruturei em múltiplas seções temáticas para contar minha trajetória de forma progressiva e envolvente.",
+      challenges: [
+        "Equilibrar estética sofisticada com performance e carregamento rápido",
+        "Criar animações que agregassem valor sem distrair o conteúdo",
+        "Garantir responsividade total em todos os dispositivos",
+      ],
+      technicalDecisions: [
+        "Optei por utilizar React pela flexibilidade na componentização e facilidade de manutenção.",
+        "O Framer Motion foi escolhido para criar animações fluidas sem comprometer a performance.",
+        "A estrutura foi organizada em componentes reutilizáveis para facilitar escalabilidade e evolução do projeto."
+      ],
+      architecture: [
+        "Componentes reutilizáveis separados por responsabilidade",
+        "Estrutura modular para facilitar manutenção e expansão",
+        "Tipagem consistente para evitar erros e melhorar a previsibilidade"
+      ],
+      results: [
+        "Estrutura componentizada facilitando manutenção e escalabilidade",
+        "Performance otimizada com carregamento rápido mesmo com animações",
+        "Experiência consistente em diferentes dispositivos",
+        "Organização de código seguindo boas práticas"
+      ],
+      futureImprovements: [
+        "Integração com back-end ou CMS para gerenciamento dinâmico de conteúdo",
+        "Implementação de métricas de performance (Web Vitals)",
+        "Adição de testes automatizados para componentes críticos"
+      ],
+    },
+  },
+  {
+    title: "Sistema de Gestão",
+    description: "Aplicação web full-stack para gerenciamento de dados e processos internos.",
+    problem: "Digitalizar e organizar fluxos manuais de trabalho.",
+    stack: ["C#", "React", "SQL Server", "REST API"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    live: "#",
+    code: "#",
+    caseStudy: {
+      problem: "Uma empresa precisava substituir planilhas e processos manuais por um sistema centralizado que permitisse controle de dados em tempo real e colaboração entre equipes.",
+      solution: "Construí uma aplicação full-stack com back-end em C# expondo APIs REST e front-end em React. O sistema permite CRUD completo, filtros, relatórios e diferentes níveis de acesso por perfil de usuário.",
+      challenges: [
+        "Modelar o banco de dados para suportar múltiplos cenários de uso",
+        "Implementar autenticação e controle de acesso por perfil",
+        "Garantir integridade dos dados em operações concorrentes",
+      ],
+      technicalDecisions: [
+        "Adoção do C# (.NET Core) no back-end para um processamento seguro e tipagem forte em processos transacionais.",
+        "Uso do React no front-end em arquitetura SPA para mitigar round-trips ao servidor, conferindo agilidade interativa.",
+        "Modelagem de APIs baseadas no padrão RESTful, isolando a regra de negócios de consumos externos."
+      ],
+      architecture: [
+        "Back-end estruturado com separação rígida de camadas (Controllers, Services, Repositories).",
+        "Autenticação e autorização centralizada via JWT interagindo com rotinas baseadas em roles (RBAC).",
+        "Front-end gerenciando estado assíncrono para abstrair queries complexas de dados e otimização da renderização."
+      ],
+      results: [
+        "Arquitetura modularizada e escalável entregue, simplificando imensamente as futuras integrações lógicas.",
+        "Segurança das informações blindada por uma hierarquia de acesso rigorosamente modelada.",
+        "Aumento exponencial na transparência dos dados por meio de visões (dashboards) em tempo real."
+      ],
+      futureImprovements: [
+        "Migração progressiva do banco relacional em máquina física para soluções escaláveis (AWS RDS / Azure SQL).",
+        "Injeção de tecnologia assíncrona full-duplex via SignalR ou WebSockets nativos para broadcasts live.",
+        "Filas de mensageria escalares (RabbitMQ) para extração background de relatórios PDF pesados sem bloqueio da main thread."
+      ],
+    },
+  },
+  {
+    title: "App Multilíngue",
+    description: "Aplicação com suporte a múltiplos idiomas e layout responsivo completo.",
+    problem: "Criar experiência inclusiva para usuários de diferentes países.",
+    stack: ["React", "i18next", "TypeScript", "Tailwind"],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
+    live: "#",
+    code: "#",
+    caseStudy: {
+      problem: "A aplicação precisava atender usuários de diferentes países e idiomas sem duplicar código ou criar versões separadas, mantendo uma única base de código sustentável.",
+      solution: "Implementei internacionalização com i18next no React, estruturando arquivos de tradução modulares por namespace. O sistema detecta automaticamente o idioma do browser e permite troca manual pelo usuário.",
+      challenges: [
+        "Estruturar os arquivos de tradução de forma escalável",
+        "Lidar com pluralização e formatação de datas/números por locale",
+        "Garantir que o layout não quebrasse com textos de diferentes comprimentos",
+      ],
+      technicalDecisions: [
+        "Integração do framework i18next pelo grande ecossistema de módulos escaláveis disponíveis ao React.",
+        "Dicionários JSON rigorosamente fatiados por namespaces lógicos para habilitar Code Splitting e Lazy Loading.",
+        "Arquitetura de estilização fluida no Tailwind baseada no eixo Flex, suprimindo o vazamento de copys longas."
+      ],
+      architecture: [
+        "Design Pattern por Custom Hooks delegando injeção de idiomas totalmente disjunta aos componentes de View genéricos.",
+        "Roteamento sensível contextual mapeando nativamente a seleção idiomática no path e persistência no browser.",
+        "Definição robusta de Fallback Font-Families nativas nos Browsers prevendo ausência de glifos em tipografias custom."
+      ],
+      results: [
+        "Implementação enxuta validada para dezenas de matrizes de idiomas com sobrecarga de assets controlada e mínima.",
+        "Gerenciamento de pluralização dinamicamente isolado, desonerando o frontend de lógicas textuais estritas.",
+        "Comutação instantânea de linguagem a quente sem refetch de arvore de roteamento, provando altíssima proficiência em SPA."
+      ],
+      futureImprovements: [
+        "Incorporação do módulo i18next-http-backend abstraindo as fontes de tradução a repasses diretos por um Headless CMS.",
+        "Avaliar Server-Side Rendering (SSR) parcial de chaves linguísticas pontuais para rastreabilidade primária de SEO.",
+        "Adicionar pipelines em CI/CD engatilhados por scripts para detecção morta de chaves orfãs ou corrompidas pós-push."
+      ],
+    },
+  },
+];
 
-type ProjectsProps = {
-  t: Translation;
-};
-
-export default function Projects({ t }: ProjectsProps) {
-  const stackColors: Record<string, string> = {
-    React: "#61DAFB",
-    "Next.js": "#fff",
-    TypeScript: "#3178C6",
-    "Tailwind CSS": "#06B6D4",
-    "Node.js": "#68A063",
-    Python: "#3776AB",
-    GraphQL: "#E10098",
-    PostgreSQL: "#4169E1",
-    MongoDB: "#47A248",
-    "D3.js": "#F9A03C",
-    Storybook: "#FF4785",
-    Stripe: "#635BFF",
-    AWS: "#FF9900",
-    Redux: "#764ABC",
-    "Web3.js": "#F16822",
-    "Chart.js": "#FF6384",
-    Docker: "#2496ED",
-    TensorFlow: "#FF6F00",
-    "React Native": "#61DAFB",
-    Prisma: "#2D3748",
-    "REST API": "#7c3aed",
-    "REST APIs": "#7c3aed",
-    WebSockets: "#a78bfa",
-    Vercel: "#fff",
-    Figma: "#F24E1E",
-    "CI/CD": "#94a3b8",
-  };
+export default function Projects() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const [selectedProject, setSelectedProject] = useState<any>(null);
 
   return (
-    <section id="projects" style={{ padding: "120px 5%", position: "relative" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <Reveal>
-          <p
-            style={{
-              fontFamily: "monospace",
-              color: "#7c3aed",
-              fontSize: 12,
-              letterSpacing: "0.3em",
-              marginBottom: 16,
-              textTransform: "uppercase",
-            }}
-          >
-            // {t.projects.label}
-          </p>
-
-          <h2
-            style={{
-              fontSize: "clamp(1.8rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "#f1f5f9",
-              marginBottom: 12,
-            }}
-          >
-            {t.projects.heading}
-          </h2>
-
-          <p style={{ color: "#64748b", fontFamily: "monospace", marginBottom: 60 }}>
-            {t.projects.sub}
-          </p>
-        </Reveal>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-            gap: 24,
-          }}
+    <section id="projects" ref={ref} className="py-28 px-6" style={{ position: "relative" }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          {t.projects.items.map((proj, index) => (
-            <Reveal key={index} delay={index * 0.08}>
-              <div
-                className="project-card"
-                style={{
-                  background: "rgba(15,10,25,0.8)",
-                  border: "1px solid rgba(124,58,237,0.15)",
-                  borderRadius: 20,
-                  padding: 28,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 16,
-                  height: "100%",
-                  transition: "all 0.3s ease",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                  <div
-                    style={{
-                      width: 44,
-                      height: 44,
-                      borderRadius: 12,
-                      background: "rgba(124,58,237,0.15)",
-                      border: "1px solid rgba(124,58,237,0.25)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 20,
-                    }}
-                  >
-                    {["⚡", "🛒", "📊", "🎙️", "📝", "₿"][index % 6]}
-                  </div>
+          <p className="text-purple-400 text-xs font-mono tracking-[0.3em] uppercase mb-3">Trabalhos</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent px-2">
+            Projetos em destaque
+          </h2>
+        </motion.div>
 
-                  <div style={{ display: "flex", gap: 8 }}>
-                    <a
-                      href="#"
-                      className="icon-btn"
-                      style={{
-                        width: 32,
-                        height: 32,
-                        borderRadius: 8,
-                        background: "rgba(124,58,237,0.1)",
-                        border: "1px solid rgba(124,58,237,0.2)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textDecoration: "none",
-                        color: "#a78bfa",
-                        fontSize: 14,
-                        transition: "all 0.2s ease",
-                      }}
-                    >
-                      ↗
-                    </a>
+        <div className="grid md:grid-cols-3 gap-6">
+          {projects.map((project, i) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.12, duration: 0.6 }}
+              className="group rounded-2xl bg-white/3 border border-white/8 hover:border-purple-500/40 overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,92,246,0.1)] flex flex-col"
+            >
+              {/* Image */}
+              <div className="relative h-44 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-transparent" />
+              </div>
 
-                    <a
-                      href="#"
-                      className="icon-btn"
-                      style={{
-                        width: 32,
-                        height: 32,
-                        borderRadius: 8,
-                        background: "rgba(124,58,237,0.1)",
-                        border: "1px solid rgba(124,58,237,0.2)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textDecoration: "none",
-                        color: "#a78bfa",
-                        fontSize: 12,
-                        transition: "all 0.2s ease",
-                      }}
-                    >
-                      GH
-                    </a>
-                  </div>
-                </div>
+              {/* Content */}
+              <div className="p-6 flex flex-col flex-1 items-center text-center md:items-start md:text-left">
+                <h3 className="text-lg font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed mb-3">{project.description}</p>
+                <p className="text-white/30 text-xs mb-4 italic">"{project.problem}"</p>
 
-                <h3 style={{ color: "#f1f5f9", fontSize: 18, fontWeight: 600, margin: 0 }}>
-                  {proj.title}
-                </h3>
-
-                <p style={{ color: "#64748b", fontSize: 14, lineHeight: 1.7, margin: 0, flex: 1 }}>
-                  {proj.desc}
-                </p>
-
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                  {proj.stack.map((stackItem, stackIndex) => (
+                <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-5 mt-auto w-full">
+                  {project.stack.map((tech) => (
                     <span
-                      key={stackIndex}
-                      style={{
-                        padding: "3px 10px",
-                        borderRadius: 100,
-                        fontSize: 11,
-                        fontFamily: "monospace",
-                        background: "rgba(124,58,237,0.08)",
-                        border: "1px solid rgba(124,58,237,0.2)",
-                        color: stackColors[stackItem] || "#a78bfa",
-                      }}
+                      key={tech}
+                      className="px-2 py-1 text-xs font-mono text-purple-300 bg-purple-900/20 border border-purple-500/20 rounded"
                     >
-                      {stackItem}
+                      {tech}
                     </span>
                   ))}
                 </div>
 
-                <div style={{ display: "flex", gap: 10, marginTop: 4 }}>
+                <div className="flex justify-center md:justify-start gap-4 pt-4 border-t border-white/5 w-full">
                   <a
-                    href="#"
-                    className="demo-btn"
-                    style={{
-                      flex: 1,
-                      textAlign: "center",
-                      padding: "10px",
-                      borderRadius: 10,
-                      background: "rgba(124,58,237,0.15)",
-                      border: "1px solid rgba(124,58,237,0.3)",
-                      color: "#a78bfa",
-                      fontSize: 12,
-                      fontFamily: "monospace",
-                      textDecoration: "none",
-                      transition: "all 0.2s ease",
-                    }}
+                    href={project.live}
+                    className="flex items-center gap-1.5 text-xs text-white/60 hover:text-purple-300 transition-colors"
                   >
-                    {t.projects.demo}
+                    <ExternalLink size={13} />
+                    Ver projeto
                   </a>
-
                   <a
-                    href="#"
-                    className="gh-btn"
-                    style={{
-                      flex: 1,
-                      textAlign: "center",
-                      padding: "10px",
-                      borderRadius: 10,
-                      background: "transparent",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      color: "#64748b",
-                      fontSize: 12,
-                      fontFamily: "monospace",
-                      textDecoration: "none",
-                      transition: "all 0.2s ease",
-                    }}
+                    href={project.code}
+                    className="flex items-center gap-1.5 text-xs text-white/60 hover:text-purple-300 transition-colors"
                   >
-                    {t.projects.github}
+                    <Github size={13} />
+                    Ver código
                   </a>
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="flex items-center gap-1.5 text-xs text-white/60 hover:text-purple-300 transition-colors md:ml-auto"
+                  >
+                    <FileText size={13} />
+                    Case
+                  </button>
                 </div>
               </div>
-            </Reveal>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      <style>{`
-        .project-card:hover {
-          border-color: rgba(124,58,237,0.4) !important;
-          transform: translateY(-6px);
-          box-shadow: 0 20px 60px rgba(124,58,237,0.15);
-        }
-
-        .icon-btn:hover {
-          background: rgba(124,58,237,0.25) !important;
-          border-color: rgba(124,58,237,0.5) !important;
-        }
-
-        .demo-btn:hover {
-          background: rgba(124,58,237,0.3) !important;
-        }
-
-        .gh-btn:hover {
-          border-color: rgba(255,255,255,0.2) !important;
-          color: #94a3b8 !important;
-        }
-      `}</style>
+      <ProjectCaseModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }

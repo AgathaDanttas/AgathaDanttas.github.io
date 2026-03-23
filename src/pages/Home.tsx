@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { translations } from "../data/translations";
 import type { Language } from "../types/language";
-import Navbar from "../components/home/navBar";
+import Navbar from "../components/home/NavBar";
 import Hero from "../components/home/Hero";
 import About from "../components/home/About";
 import Projects from "../components/home/Projects";
@@ -10,6 +10,10 @@ import Contact from "../components/home/Contact";
 import SplashScreen from "../components/home/SplashScreen";
 import ParticleCanvas from "../components/home/ParticleCanvas";
 import CustomCursor from "../components/home/CustomCursor";
+import Experience from "../components/home/Experience";
+import Process from "../components/home/Process";
+import StudyingSection from "../components/home/Studying";
+
 
 export default function Home() {
   const [splashDone, setSplashDone] = useState(false);
@@ -38,6 +42,9 @@ export default function Home() {
           <Hero t={t} />
           <About t={t} />
           <Projects t={t} />
+          <Process />
+          <Experience />
+          <StudyingSection />
           <Skills t={t} />
           <Contact t={t} />
         </main>
