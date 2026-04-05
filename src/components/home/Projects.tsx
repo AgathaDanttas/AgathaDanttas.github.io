@@ -5,120 +5,121 @@ import ProjectCaseModal from "./ProjectCaseModal";
 
 const projects = [
   {
-    title: "Portfolio Pessoal",
-    description: "Portfolio moderno com animações, i18n, dark theme e design futurista.",
-    problem: "Centralizar presença online com identidade visual forte.",
-    stack: ["React", "TypeScript", "Tailwind", "Framer Motion"],
+    title: "Stox",
+    description: "Sistema de gerenciamento de estoque com controle de produtos, movimentações em tempo real, dashboards e chat integrado.",
+    problem: "Falta de controle organizado sobre produtos e movimentações em estoque",
+    stack: ["React", "TypeScript", "Tailwind", "Framer Motion", "MongoDB"],
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
     live: "#",
     code: "#",
     caseStudy: {
-      problem: "Precisava de um espaço online que refletisse minha identidade como desenvolvedora — não apenas um currículo digital, mas uma experiência que comunicasse minha forma de pensar e construir.",
-      solution: "Desenvolvi um portfolio com design futurista em dark mode, usando React com animações fluidas via Framer Motion. Estruturei em múltiplas seções temáticas para contar minha trajetória de forma progressiva e envolvente.",
+      problem: "Empresas e usuários enfrentam dificuldades para controlar entradas e saídas de produtos de forma organizada e confiável, o que pode gerar erros, perdas e falta de visibilidade do estoque.",
+      solution: "Desenvolvi o Stox, um sistema de gerenciamento de estoque que permite controlar produtos, registrar movimentações em tempo real e visualizar dados de forma clara através de dashboards. A aplicação foi construída com foco em usabilidade, organização e performance.",
       challenges: [
-        "Equilibrar estética sofisticada com performance e carregamento rápido",
-        "Criar animações que agregassem valor sem distrair o conteúdo",
-        "Garantir responsividade total em todos os dispositivos",
+        "Modelar corretamente as movimentações de entrada e saída de produtos",
+        "Manter a consistência dos dados em tempo real",
+        "Organizar o estado da aplicação de forma escalável",
+
       ],
       technicalDecisions: [
-        "Optei por utilizar React pela flexibilidade na componentização e facilidade de manutenção.",
-        "O Framer Motion foi escolhido para criar animações fluidas sem comprometer a performance.",
-        "A estrutura foi organizada em componentes reutilizáveis para facilitar escalabilidade e evolução do projeto."
+        "Utilizei React com TypeScript para garantir tipagem forte e maior previsibilidade do código.",
+        "Escolhi MongoDB pela flexibilidade no armazenamento de dados relacionados a produtos e movimentações.",
+        "A arquitetura foi baseada em componentes reutilizáveis para facilitar manutenção e evolução do sistema.",
       ],
-      architecture: [
-        "Componentes reutilizáveis separados por responsabilidade",
-        "Estrutura modular para facilitar manutenção e expansão",
-        "Tipagem consistente para evitar erros e melhorar a previsibilidade"
-      ],
-      results: [
-        "Estrutura componentizada facilitando manutenção e escalabilidade",
-        "Performance otimizada com carregamento rápido mesmo com animações",
-        "Experiência consistente em diferentes dispositivos",
-        "Organização de código seguindo boas práticas"
-      ],
-      futureImprovements: [
-        "Integração com back-end ou CMS para gerenciamento dinâmico de conteúdo",
-        "Implementação de métricas de performance (Web Vitals)",
-        "Adição de testes automatizados para componentes críticos"
-      ],
+  architecture: [
+    "Componentização baseada em responsabilidade",
+  "Separação clara entre UI, lógica e dados",
+  "Uso de tipagem para maior segurança e escalabilidade"
+  ],
+  results: [
+    "Melhoria na organização e controle de estoque",
+  "Redução de erros em registros de movimentações",
+  "Interface intuitiva que facilita o uso por diferentes usuários",
+  "Código estruturado e preparado para evolução"
+  ],
+  futureImprovements: [
+    "Implementar autenticação e controle de acesso por usuário",
+  "Adicionar relatórios avançados e analytics",
+  "Integração com APIs externas para automação de processos"
+  ],
     },
   },
-  {
-    title: "Sistema de Gestão",
+{
+  title: "Sistema de Gestão",
     description: "Aplicação web full-stack para gerenciamento de dados e processos internos.",
-    problem: "Digitalizar e organizar fluxos manuais de trabalho.",
-    stack: ["C#", "React", "SQL Server", "REST API"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    live: "#",
-    code: "#",
-    caseStudy: {
-      problem: "Uma empresa precisava substituir planilhas e processos manuais por um sistema centralizado que permitisse controle de dados em tempo real e colaboração entre equipes.",
+      problem: "Digitalizar e organizar fluxos manuais de trabalho.",
+        stack: ["C#", "React", "SQL Server", "REST API"],
+          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+            live: "#",
+              code: "#",
+                caseStudy: {
+    problem: "Uma empresa precisava substituir planilhas e processos manuais por um sistema centralizado que permitisse controle de dados em tempo real e colaboração entre equipes.",
       solution: "Construí uma aplicação full-stack com back-end em C# expondo APIs REST e front-end em React. O sistema permite CRUD completo, filtros, relatórios e diferentes níveis de acesso por perfil de usuário.",
-      challenges: [
-        "Modelar o banco de dados para suportar múltiplos cenários de uso",
-        "Implementar autenticação e controle de acesso por perfil",
-        "Garantir integridade dos dados em operações concorrentes",
-      ],
-      technicalDecisions: [
-        "Adoção do C# (.NET Core) no back-end para um processamento seguro e tipagem forte em processos transacionais.",
-        "Uso do React no front-end em arquitetura SPA para mitigar round-trips ao servidor, conferindo agilidade interativa.",
-        "Modelagem de APIs baseadas no padrão RESTful, isolando a regra de negócios de consumos externos."
-      ],
-      architecture: [
-        "Back-end estruturado com separação rígida de camadas (Controllers, Services, Repositories).",
-        "Autenticação e autorização centralizada via JWT interagindo com rotinas baseadas em roles (RBAC).",
-        "Front-end gerenciando estado assíncrono para abstrair queries complexas de dados e otimização da renderização."
-      ],
-      results: [
-        "Arquitetura modularizada e escalável entregue, simplificando imensamente as futuras integrações lógicas.",
-        "Segurança das informações blindada por uma hierarquia de acesso rigorosamente modelada.",
-        "Aumento exponencial na transparência dos dados por meio de visões (dashboards) em tempo real."
-      ],
-      futureImprovements: [
-        "Migração progressiva do banco relacional em máquina física para soluções escaláveis (AWS RDS / Azure SQL).",
-        "Injeção de tecnologia assíncrona full-duplex via SignalR ou WebSockets nativos para broadcasts live.",
-        "Filas de mensageria escalares (RabbitMQ) para extração background de relatórios PDF pesados sem bloqueio da main thread."
-      ],
+        challenges: [
+          "Modelar o banco de dados para suportar múltiplos cenários de uso",
+          "Implementar autenticação e controle de acesso por perfil",
+          "Garantir integridade dos dados em operações concorrentes",
+        ],
+          technicalDecisions: [
+            "Adoção do C# (.NET Core) no back-end para um processamento seguro e tipagem forte em processos transacionais.",
+            "Uso do React no front-end em arquitetura SPA para mitigar round-trips ao servidor, conferindo agilidade interativa.",
+            "Modelagem de APIs baseadas no padrão RESTful, isolando a regra de negócios de consumos externos."
+          ],
+            architecture: [
+              "Back-end estruturado com separação rígida de camadas (Controllers, Services, Repositories).",
+              "Autenticação e autorização centralizada via JWT interagindo com rotinas baseadas em roles (RBAC).",
+              "Front-end gerenciando estado assíncrono para abstrair queries complexas de dados e otimização da renderização."
+            ],
+              results: [
+                "Arquitetura modularizada e escalável entregue, simplificando imensamente as futuras integrações lógicas.",
+                "Segurança das informações blindada por uma hierarquia de acesso rigorosamente modelada.",
+                "Aumento exponencial na transparência dos dados por meio de visões (dashboards) em tempo real."
+              ],
+                futureImprovements: [
+                  "Migração progressiva do banco relacional em máquina física para soluções escaláveis (AWS RDS / Azure SQL).",
+                  "Injeção de tecnologia assíncrona full-duplex via SignalR ou WebSockets nativos para broadcasts live.",
+                  "Filas de mensageria escalares (RabbitMQ) para extração background de relatórios PDF pesados sem bloqueio da main thread."
+                ],
     },
-  },
-  {
-    title: "App Multilíngue",
+},
+{
+  title: "App Multilíngue",
     description: "Aplicação com suporte a múltiplos idiomas e layout responsivo completo.",
-    problem: "Criar experiência inclusiva para usuários de diferentes países.",
-    stack: ["React", "i18next", "TypeScript", "Tailwind"],
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
-    live: "#",
-    code: "#",
-    caseStudy: {
-      problem: "A aplicação precisava atender usuários de diferentes países e idiomas sem duplicar código ou criar versões separadas, mantendo uma única base de código sustentável.",
+      problem: "Criar experiência inclusiva para usuários de diferentes países.",
+        stack: ["React", "i18next", "TypeScript", "Tailwind"],
+          image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
+            live: "#",
+              code: "#",
+                caseStudy: {
+    problem: "A aplicação precisava atender usuários de diferentes países e idiomas sem duplicar código ou criar versões separadas, mantendo uma única base de código sustentável.",
       solution: "Implementei internacionalização com i18next no React, estruturando arquivos de tradução modulares por namespace. O sistema detecta automaticamente o idioma do browser e permite troca manual pelo usuário.",
-      challenges: [
-        "Estruturar os arquivos de tradução de forma escalável",
-        "Lidar com pluralização e formatação de datas/números por locale",
-        "Garantir que o layout não quebrasse com textos de diferentes comprimentos",
-      ],
-      technicalDecisions: [
-        "Integração do framework i18next pelo grande ecossistema de módulos escaláveis disponíveis ao React.",
-        "Dicionários JSON rigorosamente fatiados por namespaces lógicos para habilitar Code Splitting e Lazy Loading.",
-        "Arquitetura de estilização fluida no Tailwind baseada no eixo Flex, suprimindo o vazamento de copys longas."
-      ],
-      architecture: [
-        "Design Pattern por Custom Hooks delegando injeção de idiomas totalmente disjunta aos componentes de View genéricos.",
-        "Roteamento sensível contextual mapeando nativamente a seleção idiomática no path e persistência no browser.",
-        "Definição robusta de Fallback Font-Families nativas nos Browsers prevendo ausência de glifos em tipografias custom."
-      ],
-      results: [
-        "Implementação enxuta validada para dezenas de matrizes de idiomas com sobrecarga de assets controlada e mínima.",
-        "Gerenciamento de pluralização dinamicamente isolado, desonerando o frontend de lógicas textuais estritas.",
-        "Comutação instantânea de linguagem a quente sem refetch de arvore de roteamento, provando altíssima proficiência em SPA."
-      ],
-      futureImprovements: [
-        "Incorporação do módulo i18next-http-backend abstraindo as fontes de tradução a repasses diretos por um Headless CMS.",
-        "Avaliar Server-Side Rendering (SSR) parcial de chaves linguísticas pontuais para rastreabilidade primária de SEO.",
-        "Adicionar pipelines em CI/CD engatilhados por scripts para detecção morta de chaves orfãs ou corrompidas pós-push."
-      ],
+        challenges: [
+          "Estruturar os arquivos de tradução de forma escalável",
+          "Lidar com pluralização e formatação de datas/números por locale",
+          "Garantir que o layout não quebrasse com textos de diferentes comprimentos",
+        ],
+          technicalDecisions: [
+            "Integração do framework i18next pelo grande ecossistema de módulos escaláveis disponíveis ao React.",
+            "Dicionários JSON rigorosamente fatiados por namespaces lógicos para habilitar Code Splitting e Lazy Loading.",
+            "Arquitetura de estilização fluida no Tailwind baseada no eixo Flex, suprimindo o vazamento de copys longas."
+          ],
+            architecture: [
+              "Design Pattern por Custom Hooks delegando injeção de idiomas totalmente disjunta aos componentes de View genéricos.",
+              "Roteamento sensível contextual mapeando nativamente a seleção idiomática no path e persistência no browser.",
+              "Definição robusta de Fallback Font-Families nativas nos Browsers prevendo ausência de glifos em tipografias custom."
+            ],
+              results: [
+                "Implementação enxuta validada para dezenas de matrizes de idiomas com sobrecarga de assets controlada e mínima.",
+                "Gerenciamento de pluralização dinamicamente isolado, desonerando o frontend de lógicas textuais estritas.",
+                "Comutação instantânea de linguagem a quente sem refetch de arvore de roteamento, provando altíssima proficiência em SPA."
+              ],
+                futureImprovements: [
+                  "Incorporação do módulo i18next-http-backend abstraindo as fontes de tradução a repasses diretos por um Headless CMS.",
+                  "Avaliar Server-Side Rendering (SSR) parcial de chaves linguísticas pontuais para rastreabilidade primária de SEO.",
+                  "Adicionar pipelines em CI/CD engatilhados por scripts para detecção morta de chaves orfãs ou corrompidas pós-push."
+                ],
     },
-  },
+},
 ];
 
 export default function Projects() {
