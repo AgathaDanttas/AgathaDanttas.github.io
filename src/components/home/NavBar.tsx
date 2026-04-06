@@ -35,11 +35,10 @@ export default function Navbar({ t, lang, setLang, scrolled }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 z-[100] px-[5%] transition-all duration-300 ${
-        scrolled
+      className={`fixed left-0 right-0 top-0 z-[100] px-[5%] transition-all duration-300 ${scrolled
           ? "border-b border-violet-500/15 bg-black/90 backdrop-blur-xl"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="mx-auto flex h-[70px] max-w-[1200px] items-center justify-between">
         <div
@@ -87,11 +86,10 @@ export default function Navbar({ t, lang, setLang, scrolled }: NavbarProps) {
                       setLang(item.code);
                       setLangOpen(false);
                     }}
-                    className={`flex w-full items-center gap-2.5 px-4 py-2.5 text-left font-mono text-[13px] transition ${
-                      lang === item.code
+                    className={`flex w-full items-center gap-2.5 px-4 py-2.5 text-left font-mono text-[13px] transition ${lang === item.code
                         ? "bg-violet-500/15 text-violet-300"
                         : "text-slate-400 hover:bg-violet-500/10 hover:text-violet-200"
-                    }`}
+                      }`}
                   >
                     <span>{item.flag}</span>
                     <span>{item.label}</span>
@@ -142,11 +140,10 @@ export default function Navbar({ t, lang, setLang, scrolled }: NavbarProps) {
                 setLang(item.code);
                 setLangOpen(false);
               }}
-              className={`flex w-full items-center gap-2.5 px-4 py-3 text-left font-mono text-sm transition ${
-                lang === item.code
+              className={`flex w-full items-center gap-2.5 px-4 py-3 text-left font-mono text-sm transition ${lang === item.code
                   ? "bg-violet-500/15 text-violet-300"
                   : "text-slate-400 hover:bg-violet-500/10 hover:text-violet-200"
-              }`}
+                }`}
             >
               <span>{item.flag}</span>
               <span>{item.label}</span>

@@ -55,7 +55,7 @@ export const translations: Record<Language, Translation> = {
       ]
     },
     projects: {
-      heading: "Projetos em Destaque", 
+      heading: "Projetos em Destaque",
       demo: "Demo",
       github: "GitHub",
       allProjectsHeading: "Todos os Projetos",
@@ -69,10 +69,10 @@ export const translations: Record<Language, Translation> = {
           featured: true,
         },
         {
-          title: "VendasPlus SaaS",
-          desc: "Plataforma de gestão de vendas para pequenas empresas com dashboard analítico e integração de pagamentos.",
-          stack: ["Next.js", "PostgreSQL", "Prisma", "Stripe"],
-          category: "SaaS",
+          title: "SIM-UPA",
+          desc: "Sistema integrado de monitoramento e regulação de UPAs com suporte a frotas de ambulâncias e encaminhamento inteligente.",
+          stack: ["React", "Node.js", "PostgreSQL", "Google Maps API"],
+          category: "HealthTech",
           featured: true,
         },
         {
@@ -126,7 +126,8 @@ export const translations: Record<Language, Translation> = {
   en: {
     nav: {
       home: "Home",
-      about: "About", projects: "Projects", skills: "Skills", contact: "Contact" },
+      about: "About", projects: "Projects", skills: "Skills", contact: "Contact"
+    },
     hero: {
       greeting: "Hello, I'm",
       name: "Agatha Dantas",
@@ -187,10 +188,10 @@ export const translations: Record<Language, Translation> = {
           featured: true,
         },
         {
-          title: "SalesPlus SaaS",
-          desc: "Sales management platform for small businesses with an analytical dashboard and payment integration.",
-          stack: ["Next.js", "PostgreSQL", "Prisma", "Stripe"],
-          category: "SaaS",
+          title: "SIM-UPA",
+          desc: "Integrated UPA monitoring and regulation system with ambulance fleet support and intelligent routing.",
+          stack: ["React", "Node.js", "PostgreSQL", "Google Maps API"],
+          category: "HealthTech",
           featured: true,
         },
         {
@@ -244,7 +245,8 @@ export const translations: Record<Language, Translation> = {
   fr: {
     nav: {
       home: "Accueil",
-      about: "À propos", projects: "Projets", skills: "Compétences", contact: "Contact" },
+      about: "À propos", projects: "Projets", skills: "Compétences", contact: "Contact"
+    },
     hero: {
       greeting: "Bonjour, je suis",
       name: "Agatha Dantas",
@@ -305,10 +307,10 @@ export const translations: Record<Language, Translation> = {
           featured: true,
         },
         {
-          title: "SalesPlus SaaS",
-          desc: "Plateforme de gestion des ventes pour les petites entreprises avec tableau de bord analytique et intégration des paiements.",
-          stack: ["Next.js", "PostgreSQL", "Prisma", "Stripe"],
-          category: "SaaS",
+          title: "SIM-UPA",
+          desc: "Système intégré de surveillance et de régulation des UPA avec support aux flottes d'ambulances et acheminement intelligent.",
+          stack: ["React", "Node.js", "PostgreSQL", "Google Maps API"],
+          category: "HealthTech",
           featured: true,
         },
         {
@@ -362,7 +364,8 @@ export const translations: Record<Language, Translation> = {
   es: {
     nav: {
       home: "Inicio",
-      about: "Sobre mí", projects: "Proyectos", skills: "Habilidades", contact: "Contacto" },
+      about: "Sobre mí", projects: "Proyectos", skills: "Habilidades", contact: "Contacto"
+    },
     hero: {
       greeting: "Hola, soy",
       name: "Agatha Dantas",
@@ -423,10 +426,10 @@ export const translations: Record<Language, Translation> = {
           featured: true,
         },
         {
-          title: "SalesPlus SaaS",
-          desc: "Plataforma de gestión de ventas para pequeñas empresas con un panel analítico e integración de pagos.",
-          stack: ["Next.js", "PostgreSQL", "Prisma", "Stripe"],
-          category: "SaaS",
+          title: "SIM-UPA",
+          desc: "Sistema integrado de monitoreo y regulación de UPAs con soporte para flotas de ambulancias y encaminamiento inteligente.",
+          stack: ["React", "Node.js", "PostgreSQL", "Google Maps API"],
+          category: "HealthTech",
           featured: true,
         },
         {

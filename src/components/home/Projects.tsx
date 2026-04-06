@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github, FileText } from "lucide-react";
 import ProjectCaseModal from "./ProjectCaseModal";
+import upaMockup from "../../assets/sim-upa-mockup.png";
 
 const projects = [
   {
@@ -44,44 +45,44 @@ const projects = [
   ],
     },
   },
-{
-  title: "Sistema de Gestão",
-    description: "Aplicação web full-stack para gerenciamento de dados e processos internos.",
-      problem: "Digitalizar e organizar fluxos manuais de trabalho.",
-        stack: ["C#", "React", "SQL Server", "REST API"],
-          image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-            live: "#",
-              code: "#",
-                caseStudy: {
-    problem: "Uma empresa precisava substituir planilhas e processos manuais por um sistema centralizado que permitisse controle de dados em tempo real e colaboração entre equipes.",
-      solution: "Construí uma aplicação full-stack com back-end em C# expondo APIs REST e front-end em React. O sistema permite CRUD completo, filtros, relatórios e diferentes níveis de acesso por perfil de usuário.",
-        challenges: [
-          "Modelar o banco de dados para suportar múltiplos cenários de uso",
-          "Implementar autenticação e controle de acesso por perfil",
-          "Garantir integridade dos dados em operações concorrentes",
-        ],
-          technicalDecisions: [
-            "Adoção do C# (.NET Core) no back-end para um processamento seguro e tipagem forte em processos transacionais.",
-            "Uso do React no front-end em arquitetura SPA para mitigar round-trips ao servidor, conferindo agilidade interativa.",
-            "Modelagem de APIs baseadas no padrão RESTful, isolando a regra de negócios de consumos externos."
-          ],
-            architecture: [
-              "Back-end estruturado com separação rígida de camadas (Controllers, Services, Repositories).",
-              "Autenticação e autorização centralizada via JWT interagindo com rotinas baseadas em roles (RBAC).",
-              "Front-end gerenciando estado assíncrono para abstrair queries complexas de dados e otimização da renderização."
-            ],
-              results: [
-                "Arquitetura modularizada e escalável entregue, simplificando imensamente as futuras integrações lógicas.",
-                "Segurança das informações blindada por uma hierarquia de acesso rigorosamente modelada.",
-                "Aumento exponencial na transparência dos dados por meio de visões (dashboards) em tempo real."
-              ],
-                futureImprovements: [
-                  "Migração progressiva do banco relacional em máquina física para soluções escaláveis (AWS RDS / Azure SQL).",
-                  "Injeção de tecnologia assíncrona full-duplex via SignalR ou WebSockets nativos para broadcasts live.",
-                  "Filas de mensageria escalares (RabbitMQ) para extração background de relatórios PDF pesados sem bloqueio da main thread."
-                ],
+  {
+    title: "SIM-UPA",
+    description: "Sistema integrado de monitoramento e regulação de UPAs com suporte a frotas de ambulâncias e encaminhamento inteligente.",
+    problem: "Superlotação e falta de dados em tempo real para regulação médica e logística de ambulâncias.",
+    stack: ["React", "Node.js", "PostgreSQL", "Google Maps API", "WebSockets"],
+    image: upaMockup,
+    live: "#",
+    code: "#",
+    caseStudy: {
+      problem: "As UPAs enfrentam superlotação constante e falta de visibilidade sobre a capacidade real, dificultando o direcionamento de pacientes e ambulâncias, o que resulta em maiores tempos de espera e riscos à vida.",
+      solution: "Desenvolvi o SIM-UPA, uma plataforma que centraliza os dados de ocupação (leitos, triagem, espera) e oferece um módulo exclusivo para ambulâncias (SAMU) com encaminhamento inteligente e comunicação em tempo real.",
+      challenges: [
+        "Integração de dados em tempo real com regras de lotação (Verde <70%, Amarelo 70-90%, Vermelho >90%).",
+        "Implementação de alertas automáticos para frotas de ambulâncias.",
+        "Garantia de segurança e anonimato dos dados conforme a LGPD.",
+      ],
+      technicalDecisions: [
+        "Uso de WebSockets para atualizações instantâneas de status e alertas.",
+        "Integração com Google Maps API para cálculo de rotas otimizadas baseadas em lotação.",
+        "Arquitetura baseada em microserviços para isolar o módulo de regulação do dashboard público.",
+      ],
+      architecture: [
+        "Dashboard de monitoramento em tempo real (Gestor/Público).",
+        "Módulo de Regulação e Logística de Ambulâncias.",
+        "API REST com fluxos de dados seguros (Ambulância -> Central -> UPA).",
+      ],
+      results: [
+        "Redução estimada de 20% no tempo de deslocamento de ambulâncias.",
+        "Otimização do atendimento e redução de filas por meio de direcionamento inteligente.",
+        "Tomada de decisão rápida para gestores baseada em tendências históricas.",
+      ],
+      futureImprovements: [
+        "Utilização de IA para previsão de picos de lotação com 24h de antecedência.",
+        "Integração completa com wearables para triagem antecipada dentro da ambulância.",
+        "Dashboard analítico avançado para planejamento de plantões e alocação de recursos.",
+      ],
     },
-},
+  },
 {
   title: "App Multilíngue",
     description: "Aplicação com suporte a múltiplos idiomas e layout responsivo completo.",
