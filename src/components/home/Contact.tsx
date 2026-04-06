@@ -7,10 +7,8 @@ type ContactProps = {
 
 export default function Contact({ t }: ContactProps) {
   const socials = [
-    { label: "GitHub", icon: "GH", href: "#" },
-    { label: "LinkedIn", icon: "in", href: "#" },
-    { label: "Twitter", icon: "𝕏", href: "#" },
-    { label: "Dribbble", icon: "●", href: "#" },
+    { label: "GitHub", icon: "GH", href: "https://github.com/AgathaDanttas" },
+    { label: "LinkedIn", icon: "in", href: "https://www.linkedin.com/in/agatha-danttas/" },
   ];
 
   return (
