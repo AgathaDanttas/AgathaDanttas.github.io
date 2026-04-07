@@ -68,6 +68,7 @@ export type Translation = {
     categories: SkillCategory[];
   };
   contact: {
+    label: ReactNode;
     heading: string;
     sub: string;
     email: string;
