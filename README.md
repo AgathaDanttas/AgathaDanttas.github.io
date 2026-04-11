@@ -1,50 +1,40 @@
 # 💻 Agatha Dantas — Portfólio
 
-Bem-vindo ao meu portfólio! 🚀
-Aqui você encontra alguns dos projetos que desenvolvi, além de informações sobre mim, minhas habilidades e tecnologias que utilizo no dia a dia.
+🚀 Portfólio pessoal desenvolvido para apresentar meus projetos, habilidades e evolução como Desenvolvedora Full-Stack.
+
+🔗 Acesse: https://gatita.dev.br
 
 ---
 
-## 🌐 Acesse o projeto
+## 🧠 Sobre
 
-🔗 [Veja o portfólio online](https://agathadanttas.github.io)
+Sou Desenvolvedora Full-Stack e estudante de Engenharia de Software, com foco na construção de aplicações modernas, performáticas e orientadas à experiência do usuário.
 
----
-
-## 🧠 Sobre mim
-
-Sou Desenvolvedora Full Stack e estudante de Engenharia de Software, com foco em criação de aplicações modernas, performáticas e com boa experiência do usuário.
-
-Tenho experiência com:
-
-* Desenvolvimento web (front-end e back-end)
-* Consumo e criação de APIs
-* Versionamento com Git/GitHub
-* Boas práticas de código e organização de projetos
+Este portfólio foi pensado não apenas como vitrine, mas como um projeto real, com atenção à organização, responsividade e usabilidade.
 
 ---
 
-## ⚙️ Tecnologias utilizadas
+## ⚙️ Tecnologias
 
-* ⚛️ React
-* 🟨 TypeScript
-* 🎨 Tailwind CSS
-* 🔗 Git & GitHub
-* 🌐 HTML & CSS
+- React
+- TypeScript
+- Tailwind CSS
+- HTML & CSS
+- Git & GitHub
 
 ---
 
 ## ✨ Funcionalidades
 
-* Interface moderna e responsiva
-* Animações ao rolar a página
-* Seções organizadas (Sobre, Projetos, Contato)
-* Alternância de idioma 🌍
-* Design futurista com tema escuro
+- Interface responsiva para diferentes dispositivos  
+- Animações e transições para melhor experiência do usuário  
+- Estrutura modular e organizada  
+- Alternância de idioma 🌍  
+- Design moderno com tema escuro  
 
 ---
 
-## 📁 Estrutura do projeto
+## 📁 Estrutura
 
 ```bash
 src/
@@ -52,19 +42,3 @@ src/
  ├── hooks/
  ├── pages/
  ├── assets/
-```
-## 📦 Deploy
-
-O projeto está hospedado no GitHub Pages.
-
-Para gerar a versão de produção:
-
-npm run build
-📬 Contato
-💼 LinkedIn: https://linkedin.com/in/agatha-danttas
-💻 GitHub: https://github.com/AgathaDanttas
-
-## 💜 Sobre o projeto
-
-Este portfólio foi desenvolvido com foco em apresentar minhas habilidades técnicas, organização de código e atenção à experiência do usuário.
-
