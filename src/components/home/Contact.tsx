@@ -48,7 +48,7 @@ export default function Contact({ t }: ContactProps) {
               textTransform: "uppercase",
             }}
           >
-            // {t.contact.label}
+            {t.contact.label}
           </p>
 
           <h2
@@ -77,7 +77,7 @@ export default function Contact({ t }: ContactProps) {
 
         <Reveal delay={0.1}>
           <a
-            href="mailto:agatha@example.com"
+            href="mailto:workdantas@gmail.com"
             className="email-btn"
             style={{
               display: "inline-flex",
@@ -103,7 +103,7 @@ export default function Contact({ t }: ContactProps) {
         <Reveal delay={0.2}>
           <p
             style={{
-              color: "#374151",
+              color: "#64748b",
               fontFamily: "monospace",
               fontSize: 12,
               letterSpacing: "0.15em",

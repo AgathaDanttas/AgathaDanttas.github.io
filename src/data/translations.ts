@@ -104,11 +104,11 @@ export const translations: Record<Language, Translation> = {
       categories: [
         {
           cat: "Frontend",
-          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vue.js"],
+          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Angular"],
         },
         {
           cat: "Backend",
-          items: ["Node.js", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
+          items: ["TypeScript", "Node.js", "C#", "Java", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
         },
         {
           cat: "Ferramentas",
@@ -223,11 +223,11 @@ export const translations: Record<Language, Translation> = {
       categories: [
         {
           cat: "Frontend",
-          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vue.js"],
+          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Angular"],
         },
         {
           cat: "Backend",
-          items: ["Node.js", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
+          items: ["TypeScript", "Node.js", "C#", "Java", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
         },
         {
           cat: "Tools",
@@ -342,11 +342,11 @@ export const translations: Record<Language, Translation> = {
       categories: [
         {
           cat: "Frontend",
-          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vue.js"],
+          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Angular"],
         },
         {
           cat: "Backend",
-          items: ["Node.js", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
+          items: ["TypeScript", "Node.js", "C#", "Java", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
         },
         {
           cat: "Outils",
@@ -461,11 +461,11 @@ export const translations: Record<Language, Translation> = {
       categories: [
         {
           cat: "Frontend",
-          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vue.js"],
+          items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Angular"],
         },
         {
           cat: "Backend",
-          items: ["Node.js", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
+          items: ["TypeScript", "Node.js", "C#", "Java", "Python", "GraphQL", "REST APIs", "PostgreSQL", "MongoDB"],
         },
         {
           cat: "Herramientas",

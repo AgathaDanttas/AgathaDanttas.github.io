@@ -210,29 +210,7 @@ export default function Hero({ t }: HeroProps) {
             {t.hero.cta2}
           </button>
 
-          <a
-            href="/cv.pdf"
-            download
-            className="btn-secondary"
-            style={{
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "rgba(124,58,237,0.1)",
-              border: "1px solid rgba(124,58,237,0.4)",
-              color: "#a78bfa",
-              padding: "14px 32px",
-              borderRadius: 50,
-              fontSize: 14,
-              fontFamily: "monospace",
-              letterSpacing: "0.1em",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-            }}
-          >
-            {t.hero.downloadCV || "Download CV"}
-          </a>
+
         </div>
 
         <div

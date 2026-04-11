@@ -1,5 +1,5 @@
 import React from "react";
-import {  useScrollReveal } from "../../hooks/use-mobile";
+import { useScrollReveal } from "../../hooks/use-mobile";
 import type { RevealDirection } from "../../hooks/use-mobile";
 
 type RevealProps = {

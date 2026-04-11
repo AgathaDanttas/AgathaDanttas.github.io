@@ -61,10 +61,10 @@ export default function Navbar({ t, lang, setLang, scrolled }: NavbarProps) {
             <button
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className="relative bg-transparent px-0 py-1 font-mono text-[13px] tracking-[0.05em] text-slate-400 transition-colors duration-300 hover:text-violet-300"
+              className="group relative bg-transparent px-0 py-1 font-mono text-[13px] tracking-[0.05em] text-slate-400 transition-colors duration-300 hover:text-violet-300"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 h-px w-0 bg-violet-500 transition-all duration-300 hover:w-full" />
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-violet-500 transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
 
